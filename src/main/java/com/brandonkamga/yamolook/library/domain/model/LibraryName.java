@@ -3,6 +3,8 @@ package com.brandonkamga.yamolook.library.domain.model;
 import java.util.Locale;
 import java.util.Objects;
 
+import com.brandonkamga.yamolook.library.domain.exception.InvalidLibraryNameException;
+
 public record LibraryName(
     String value,
     String normalizeValue
@@ -20,7 +22,7 @@ public record LibraryName(
 
     private static String validateAndKeep( String value) {
         if (value == null || value.isBlank()) {
-            throw new IllegalArgumentException("value must be not null");
+            throw new InvalidLibraryNameException("value must be not null");
         }
 
         return value;
